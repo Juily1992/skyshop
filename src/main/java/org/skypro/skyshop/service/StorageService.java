@@ -45,11 +45,11 @@ public class StorageService {
 
     private void testData() {
         Collection<Product> products = new ArrayList<>();
-        products.add(new SimpleProduct("Арбуз", 4, 457));
+        products.add(new SimpleProduct("Ананас", 4, 457));
         products.add(new SimpleProduct("Гирлянда Гирлянда", 10, 987));
         products.add(new DiscountedProduct("Гирлянда, Гирлянда, Гирлянда", 500, 50, 653));
         products.add(new DiscountedProduct("Книга", 400, 6, 76));
-        products.add(new FixPriceProduct("Апельсины", 64));
+        products.add(new FixPriceProduct("Мороженое", 64));
         products.add(new FixPriceProduct("Яблоки", 376));
 
         products.forEach(this::addProduct);
