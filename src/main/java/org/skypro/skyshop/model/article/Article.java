@@ -10,12 +10,13 @@ public class Article implements Searchable {
     private String title;
     private String description;
     private final UUID id = UUID.randomUUID();
+
     public Article(String title, String description) {
         this.title = title;
         this.description = description;
     }
 
-    public String getID () {
+    public String getID() {
         return id.toString();
     }
 

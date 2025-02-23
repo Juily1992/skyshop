@@ -18,6 +18,7 @@ public class ShopController {
     @Autowired
     private StorageService storageService;
     private SearchService searchService;
+
     @GetMapping("/products")
     public Collection<Product> getAllProducts() {
         return storageService.getProducts();
@@ -27,8 +28,9 @@ public class ShopController {
     public Collection<Article> getAllArticles() {
         return storageService.getArticles();
     }
+
     @GetMapping("/seach")
-    public Collection <SearchResult> search(@RequestParam("pattern") String pattern) {
+    public Collection<SearchResult> search(@RequestParam("pattern") String pattern) {
         return searchService.search(pattern);
     }
 }

@@ -5,7 +5,7 @@ public class FixPriceProduct extends Product {
 
     public FixPriceProduct(String nameProduct, int id) {
         super(nameProduct, id);
-        }
+    }
 
     @Override
     public boolean isSpecial() {

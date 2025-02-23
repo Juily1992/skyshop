@@ -42,23 +42,25 @@ public class StorageService {
         UUID articleId = UUID.randomUUID();
         articles.put(articleId, article);
     }
+
     private void testData() {
         Collection<Product> products = new ArrayList<>();
         products.add(new SimpleProduct("Арбуз", 4, 457));
         products.add(new SimpleProduct("Гирлянда Гирлянда", 10, 987));
         products.add(new DiscountedProduct("Гирлянда, Гирлянда, Гирлянда", 500, 50, 653));
         products.add(new DiscountedProduct("Книга", 400, 6, 76));
-        products.add( new FixPriceProduct("Апельсины", 64));
+        products.add(new FixPriceProduct("Апельсины", 64));
         products.add(new FixPriceProduct("Яблоки", 376));
 
         products.forEach(this::addProduct);
 
-        Collection <Article> articles = new ArrayList<>();
+        Collection<Article> articles = new ArrayList<>();
         articles.add(new Article("федорино горе", "Сказка"));
         articles.add(new Article("Места обитания китов", "Рассматриваются наиболее известные места обитания ... "));
 
         articles.forEach(this::addArticle);
     }
+
     public Collection<Searchable> getAllSearchables() {
         List<Searchable> searchables = new ArrayList<>();
         searchables.addAll(products.values());

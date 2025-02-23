@@ -8,9 +8,11 @@ public interface Searchable {
     String getName();
 
     String typeContent();
+
     default int getId() {
         return UUID.randomUUID().hashCode();
     }
+
     default String getStringRepreseentation() {
         return getName() + " - " + typeContent();
     }

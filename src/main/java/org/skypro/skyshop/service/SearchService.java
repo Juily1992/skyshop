@@ -1,4 +1,5 @@
 package org.skypro.skyshop.service;
+
 import org.skypro.skyshop.model.searchable.SearchResult;
 import org.skypro.skyshop.model.searchable.Searchable;
 import org.springframework.stereotype.Service;
@@ -10,9 +11,11 @@ import java.util.stream.Collectors;
 @Service
 public class SearchService {
     private final StorageService storageService;
+
     public SearchService(StorageService storageService) {
 
-    this.storageService = storageService;}
+        this.storageService = storageService;
+    }
 
     public List<SearchResult> search(String searchTerm) {
         Collection<Searchable> searchables = storageService.getAllSearchables();

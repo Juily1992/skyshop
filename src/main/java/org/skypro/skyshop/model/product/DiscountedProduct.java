@@ -3,9 +3,10 @@ package org.skypro.skyshop.model.product;
 public class DiscountedProduct extends Product {
     protected int basePrice;
     public int discount;
-        public DiscountedProduct(String nameProduct, int id, int basePrice, int discount) {
+
+    public DiscountedProduct(String nameProduct, int id, int basePrice, int discount) {
         super(nameProduct, id);
-         try {
+        try {
             if (basePrice <= 0) {
                 throw new IllegalArgumentException("Базовая цена не может быть меньше 0 >");
             } else if (discount < 0) {
