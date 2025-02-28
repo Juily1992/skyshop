@@ -12,59 +12,60 @@ import java.util.*;
 
 @Service
 public class StorageService {
-    private final Map<UUID, Product> products;
-    private final Map<UUID, Article> articles;
+    private final Map<UUID, Product> productStorage;
+    private final Map<UUID, Article> articleStorage;
 
     public StorageService() {
-        this.products = new HashMap<>();
-        this.articles = new HashMap<>();
+        this.productStorage = new HashMap<>();
+        this.articleStorage = new HashMap<>();
         populateData();
+        System.out.println(productStorage.values());
     }
 
     public Collection<Article> getArticles() {
-        return articles.values();
+        return articleStorage.values();
     }
 
     public Collection<Product> getProducts() {
-        return products.values();
+        return productStorage.values();
     }
 
     private void populateData() {
-        testData(); // Вызываем метод для заполнения тестовыми данными.
+        testData();
     }
 
     private void addProduct(Product product) {
         UUID productId = UUID.randomUUID();
-        products.put(productId, product);
+        productStorage.put(productId, product);
     }
 
     private void addArticle(Article article) {
         UUID articleId = UUID.randomUUID();
-        articles.put(articleId, article);
+        articleStorage.put(articleId, article);
     }
 
     private void testData() {
         Collection<Product> products = new ArrayList<>();
-        products.add(new SimpleProduct("Пазлы", 4, 457));
-        products.add(new SimpleProduct("Гирлянда Гирлянда", 10, 987));
-        products.add(new DiscountedProduct("Гирлянда, Гирлянда, Гирлянда", 500, 50, 653));
-        products.add(new DiscountedProduct("Книга", 400, 6, 76));
-        products.add(new FixPriceProduct("Мороженое", 64));
-        products.add(new FixPriceProduct("Яблоки", 376));
+        products.add(new SimpleProduct("Пазлы", UUID.randomUUID(), 457));
+        products.add(new SimpleProduct("Гирлянда Гирлянда", UUID.randomUUID(), 987));
+        products.add(new DiscountedProduct("Гирлянда, Гирлянда, Гирлянда", UUID.randomUUID(), 50, 3));
+        products.add(new DiscountedProduct("Книга", UUID.randomUUID(), 6, 76));
+        products.add(new FixPriceProduct("Мороженое", UUID.randomUUID()));
+        products.add(new FixPriceProduct("Яблоки", UUID.randomUUID()));
 
         products.forEach(this::addProduct);
 
         Collection<Article> articles = new ArrayList<>();
-        articles.add(new Article("федорино горе", "Сказка"));
-        articles.add(new Article("Места обитания китов", "Рассматриваются наиболее известные места обитания ... "));
+        articles.add(new Article("федорино горе", "Сказка", UUID.randomUUID()));
+        articles.add(new Article("Места обитания китов", "Рассматриваются наиболее известные места обитания ... ", UUID.randomUUID()));
 
         articles.forEach(this::addArticle);
     }
 
     public Collection<Searchable> getAllSearchables() {
         List<Searchable> searchables = new ArrayList<>();
-        searchables.addAll(products.values());
-        searchables.addAll(articles.values());
+        searchables.addAll(productStorage.values());
+        searchables.addAll(articleStorage.values());
         return searchables;
     }
 

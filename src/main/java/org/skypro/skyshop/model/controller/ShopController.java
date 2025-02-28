@@ -6,18 +6,27 @@ import org.skypro.skyshop.model.searchable.SearchResult;
 import org.skypro.skyshop.service.SearchService;
 import org.skypro.skyshop.service.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 
 
 @RestController
 public class ShopController {
-    @Autowired
-    private StorageService storageService;
-    private SearchService searchService;
+
+    private final StorageService storageService;
+    private final SearchService searchService;
+
+
+    public ShopController(StorageService storageService, SearchService searchService) {
+        this.storageService = storageService;
+        this.searchService = searchService;
+    }
 
     @GetMapping("/products")
     public Collection<Product> getAllProducts() {
@@ -29,7 +38,7 @@ public class ShopController {
         return storageService.getArticles();
     }
 
-    @GetMapping("/seach")
+    @GetMapping("/search")
     public Collection<SearchResult> search(@RequestParam("pattern") String pattern) {
         return searchService.search(pattern);
     }

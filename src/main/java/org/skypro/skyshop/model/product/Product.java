@@ -4,13 +4,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.skypro.skyshop.model.searchable.Searchable;
 
 import java.util.Objects;
+import java.util.UUID;
 
 
 public abstract class Product implements Searchable {
     final String nameProduct;
-    private int id;
+    private UUID id;
 
-    public Product(String nameProduct, int id) throws IllegalArgumentException {
+    public Product(String nameProduct, UUID id) throws IllegalArgumentException {
         try {
             if (nameProduct == null || nameProduct.isBlank() || nameProduct.equalsIgnoreCase("null")) {
                 throw new IllegalArgumentException("Продукт не может быть null или пуст!");
@@ -19,33 +20,34 @@ public abstract class Product implements Searchable {
             System.out.println(e.getMessage());
         }
         this.nameProduct = nameProduct;
-        this.id = id;
+        this.id = UUID.randomUUID();
     }
- public int getId () { return id; }
+
     public String getNameProduct() {
         return nameProduct;
     }
 
     public abstract int getPrice();
 
+    public abstract String toString();
+
     public abstract boolean isSpecial();
 
     @Override
-    public String getName() {
-
-        return nameProduct;
+    public UUID getId() {
+        return id;
     }
 
     @Override
     @JsonIgnore
     public String searchableName() {
-        return nameProduct;
+        return getNameProduct() + typeContent();
     }
 
     @Override
     @JsonIgnore
     public String typeContent() {
-        return "PRODUCT";
+        return ". PRODUCT";
     }
 
     @Override

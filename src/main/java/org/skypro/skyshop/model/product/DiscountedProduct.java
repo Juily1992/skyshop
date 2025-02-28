@@ -1,10 +1,12 @@
 package org.skypro.skyshop.model.product;
 
+import java.util.UUID;
+
 public class DiscountedProduct extends Product {
     protected int basePrice;
     public int discount;
 
-    public DiscountedProduct(String nameProduct, int id, int basePrice, int discount) {
+    public DiscountedProduct(String nameProduct, UUID id, int basePrice, int discount) {
         super(nameProduct, id);
         try {
             if (basePrice <= 0) {

@@ -2,10 +2,12 @@ package org.skypro.skyshop.model.product;
 
 import org.skypro.skyshop.model.exceptions.ProductNotFoundException;
 
+import java.util.UUID;
+
 public class SimpleProduct extends Product {
     final int price;
 
-    public SimpleProduct(String nameProduct, int id, int price) {
+    public SimpleProduct(String nameProduct, UUID id, int price) {
         super(nameProduct, id);
         try {
             if (price <= 0) {
