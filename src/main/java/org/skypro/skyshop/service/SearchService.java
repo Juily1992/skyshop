@@ -2,10 +2,10 @@ package org.skypro.skyshop.service;
 
 import org.skypro.skyshop.model.searchable.SearchResult;
 import org.skypro.skyshop.model.searchable.Searchable;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -17,18 +17,19 @@ public class SearchService {
         this.storageService = storageService;
     }
 
-    public List<SearchResult> search(String searchTerm) {
+
+    public List<SearchResult> search(String pattern) {
         Collection<Searchable> searchables = storageService.getAllSearchables();
 
         return searchables.stream()
+                .filter(searchable -> calculateRelevance(searchable, pattern) > 0)
                 .map(SearchResult::fromSearchable)
-                .filter(searchResult -> searchResult.getName().toLowerCase().contains(searchTerm.toLowerCase()))
                 .collect(Collectors.toList());
     }
 
-    private int calculateRelevance(Searchable searchable, String searchTerm) {
-        String searchableName = searchable.searchableName().toLowerCase();
-        String term = searchTerm.toLowerCase();
+    private int calculateRelevance(Searchable searchable, String pattern) {
+        String searchableName = searchable.getStringRepreseentation().toLowerCase();
+        String term = pattern.toLowerCase();
 
         if (searchableName.contains(term)) {
             return 1;
