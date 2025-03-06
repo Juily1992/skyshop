@@ -10,9 +10,11 @@ public class BasketItem {
         this.product = product;
         this.amount = amount;
     }
+
     public Product getProduct() {
         return product;
     }
+
     public int getAmount() {
         return amount;
     }
