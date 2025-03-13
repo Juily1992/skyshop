@@ -4,17 +4,14 @@ import org.skypro.skyshop.model.basket.BasketItem;
 import org.skypro.skyshop.model.basket.ProductBasket;
 import org.skypro.skyshop.model.basket.UserBasket;
 import org.skypro.skyshop.model.exceptions.NoSuchProductEsception;
-import org.skypro.skyshop.model.exceptions.ProductNotFoundException;
-import org.skypro.skyshop.model.exceptions.ShopError;
 import org.skypro.skyshop.model.product.Product;
 import org.springframework.stereotype.Service;
-import org.springframework.web.context.annotation.SessionScope;
+
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
-@SessionScope
 public class BasketService {
     private final ProductBasket productBasket;
     private final StorageService storageService;
