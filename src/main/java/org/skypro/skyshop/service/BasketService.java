@@ -45,7 +45,7 @@ public class BasketService {
 
                     if (product == null) {
                         throw new NoSuchProductEsception("Запрос не может быть пустым");
-                     }
+                    }
                     return new BasketItem(product, quantity);
                 })
                 .filter(Objects::nonNull)
