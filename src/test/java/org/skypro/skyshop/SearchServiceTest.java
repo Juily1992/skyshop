@@ -86,6 +86,7 @@ public class SearchServiceTest {
         assertEquals(3, searchables.size());
     }
 
+
     @Test
     void testGetProductsById_VerifiedMockito() {
         storageService.getProductById(existingProductId);

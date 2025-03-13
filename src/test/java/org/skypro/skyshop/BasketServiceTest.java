@@ -36,6 +36,7 @@ public class BasketServiceTest {
         when(storageService.getProductById(notExistingProductId)).thenReturn(Optional.empty());
     }
 
+
     @Test
     void testAddNotExistingProductToBasket() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
