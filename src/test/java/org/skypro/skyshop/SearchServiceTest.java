@@ -78,14 +78,12 @@ public class SearchServiceTest {
         assertFalse(articles.isEmpty());
         assertEquals(1, articles.size());
     }
-
     @Test
     void testGetAllSearchables() {
         Collection<Searchable> searchables = storageService.getAllSearchables();
         assertFalse(searchables.isEmpty());
         assertEquals(3, searchables.size());
     }
-
 
     @Test
     void testGetProductsById_VerifiedMockito() {
